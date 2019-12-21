@@ -1,12 +1,12 @@
 package bookmark;
 
-public class bookmark {
+public class Bookmark {
 
   private long id;
-  private final String title;
-  private final String url;
+  private String title;
+  private String url;
 
-  public bookmark(String title, url) {
+  public Bookmark(String title, String url) {
     this.title = title;
     this.url = url;
   }
@@ -33,11 +33,11 @@ public class bookmark {
     return url;
   }
   
-  public static void main(String args[]){
-    bookmark b = new Bookmark("this is hte title", "http://www.google.com");
-    System.out.println(bookmark.id);
-    System.out.println(bookmark.title);
-    System.out.println(bookmark.url);
-  }
+  // public static void main(String args[]) {
+  //   Bookmark bookmark = new Bookmark("This is the title", "https://www.asdf.com");
+  //   System.out.println(bookmark.id);
+  //   System.out.println(bookmark.title);
+  //   System.out.println(bookmark.url);
+  // }
   
 }
