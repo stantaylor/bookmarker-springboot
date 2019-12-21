@@ -7,12 +7,13 @@ public class Bookmark {
   private String url;
 
   public Bookmark(String title, String url) {
+    this.id = 1;
     this.title = title;
     this.url = url;
   }
 
   public long getId() {
-    return id;
+    return 100;
   }
   public void setId(){
     id = 123;
@@ -32,12 +33,5 @@ public class Bookmark {
   public String getUrl() {
     return url;
   }
-  
-  // public static void main(String args[]) {
-  //   Bookmark bookmark = new Bookmark("This is the title", "https://www.asdf.com");
-  //   System.out.println(bookmark.id);
-  //   System.out.println(bookmark.title);
-  //   System.out.println(bookmark.url);
-  // }
-  
+
 }
