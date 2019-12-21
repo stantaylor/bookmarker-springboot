@@ -1,6 +1,10 @@
+# Custom
+.gradle/
+build/
+.c9/
+
 # Compiled class file
 *.class
-.gradle/
 
 # Log file
 *.log
