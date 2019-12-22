@@ -2,6 +2,7 @@
 .gradle/
 build/
 .c9/
+.idea/
 
 # Compiled class file
 *.class
