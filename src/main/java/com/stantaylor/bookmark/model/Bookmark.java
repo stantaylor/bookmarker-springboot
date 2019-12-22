@@ -1,4 +1,4 @@
-package com.stantaylor.bookmark;
+package com.stantaylor.bookmark.model;
 
 public class Bookmark {
 
@@ -34,4 +34,8 @@ public class Bookmark {
     return url;
   }
 
+  @Override
+  public String toString() {
+    return "Bookmark [id=" + id + ", title=" + title + ", url=" + url + "]";
+  }
 }
