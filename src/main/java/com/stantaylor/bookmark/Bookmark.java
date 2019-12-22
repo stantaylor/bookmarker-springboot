@@ -1,4 +1,4 @@
-package bookmark;
+package com.stantaylor.bookmark;
 
 public class Bookmark {
 
