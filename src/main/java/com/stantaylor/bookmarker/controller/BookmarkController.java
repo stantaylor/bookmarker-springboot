@@ -1,40 +1,46 @@
 package com.stantaylor.bookmarker.controller;
 
-import com.stantaylor.bookmarker.dao.BookmarkDAO;
 import com.stantaylor.bookmarker.model.Bookmark;
 import com.stantaylor.bookmarker.model.Bookmarks;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import com.stantaylor.bookmarker.view.BookmarkView;
 
-import java.net.URI;
 
-@RestController
-@RequestMapping("/bookmarks")
 public class BookmarkController {
 
-    @Autowired
-    private BookmarkDAO bookmarkDAO;
+    private Bookmark model;
+    private BookmarkView view;
 
-    @GetMapping(path="/", produces = "application/json")
-    public Bookmarks getBookmarks()
-    {
-        return bookmarkDAO.getAllBookmarks();
+    public BookmarkController(Bookmark model, BookmarkView view){
+        this.model = model;
+        this.view = view;
     }
 
-    @PostMapping(path= "/", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> addBookmark(@RequestBody Bookmark bookmark){
+    public void setBookmarkId(){
+        model.setId();
+    }
 
-        bookmark.setId();
-        bookmarkDAO.addBookmark(bookmark);
+    public int getBookmarkId(){
+        return model.getId();
+    }
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(bookmark.getId())
-                .toUri();
+    public void setBookmarkTitle(String title){
+        model.setTitle(title);
+    }
 
-        return ResponseEntity.created(location).build();
+    public String getBookmarkTitle() {
+        return model.getTitle();
+    }
+
+    public void setBookmarkUrl(String url){
+        model.setUrl(url);
+    }
+
+    public String getBookmarkUrl(){
+        return model.getUrl();
+    }
+
+    public void updateView() {
+        view.printBookmarkDetails(model.getId(), model.getTitle(), model.getUrl());
     }
 
 }

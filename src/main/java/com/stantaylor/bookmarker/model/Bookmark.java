@@ -4,24 +4,24 @@ import java.util.Random;
 
 public class Bookmark {
 
-    private long id;
+    private int id;
     private String title;
     private String url;
 
     public Bookmark(String title, String url) {
-        this.id = 1;
+        this.id = setId();
         this.title = title;
         this.url = url;
     }
 
-    public long getId() {
-        return 100;
+    public int getId() {
+        return id;
     }
 
-    public void setId() {
-
-        Random rand = new Random();
+    public int setId() {
+        Random rand = new Random(System.currentTimeMillis());
         id = rand.nextInt(100000);
+        return id;
     }
 
     public String getTitle() {
@@ -40,8 +40,4 @@ public class Bookmark {
         return url;
     }
 
-    @Override
-    public String toString() {
-        return "Bookmark [id=" + id + ", title=" + title + ", url=" + url + "]";
-    }
 }

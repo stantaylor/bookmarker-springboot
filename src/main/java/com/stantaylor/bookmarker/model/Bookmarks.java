@@ -10,15 +10,11 @@ public class Bookmarks {
 
     private ArrayList<Bookmark> bookmarkList;
 
-    public ArrayList<Bookmark> getBookmarkList() {
+    public ArrayList<Bookmark> getAllBookmarks() {
         if(bookmarkList == null ) {
             bookmarkList = new ArrayList<>();
         }
         return bookmarkList;
-    }
-
-    public void setBookmarkList(ArrayList<Bookmark> bookmarkList){
-        this.bookmarkList = bookmarkList;
     }
 
     public void add(Bookmark bookmark) {
