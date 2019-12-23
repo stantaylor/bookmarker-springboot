@@ -1,4 +1,4 @@
-package com.stantaylor.bookmark;
+package com.stantaylor.bookmarker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
