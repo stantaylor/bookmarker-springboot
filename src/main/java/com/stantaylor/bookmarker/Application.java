@@ -2,21 +2,29 @@ package com.stantaylor.bookmarker;
 
 import com.stantaylor.bookmarker.controller.BookmarkController;
 import com.stantaylor.bookmarker.model.Bookmark;
-import com.stantaylor.bookmarker.view.BookmarkView;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.hibernate.SessionFactory;
+
+import java.util.Date;
 
 public class Application {
 
-  public static void main(String[] args) {
+    private static SessionFactory factory;
 
-      String snippet = RandomStringUtils.randomAlphabetic(10);
-      Bookmark model = new Bookmark(snippet, "https://www." + snippet + ".com");
+    public static void main(String[] args) {
 
-      BookmarkView view = new BookmarkView();
+        Bookmark bm = new Bookmark();
 
-      BookmarkController controller = new BookmarkController(model, view);
+        String snippet = RandomStringUtils.randomAlphabetic(10);
+        bm.setTitle(snippet);
+        bm.setUrl("http://www." + snippet + ".com/");
+        bm.setInsertTime(new Date());
 
-      controller.updateView();
+        Integer id = BookmarkController.create((bm));
+        System.out.println("id: " + id.toString());
 
-  }
+
+    }
+
+
 }

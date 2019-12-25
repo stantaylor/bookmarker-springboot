@@ -1,13 +1,18 @@
 DROP TABLE IF EXISTS bookmarks;
-CREATE TABLE bookmarks (
-    id INT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    url TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=INNODB;
+DROP TABLE IF EXISTS bookmark;
 
-INSERT INTO bookmarks(id, title, url) VALUES (213123, "Google", "https://www.google.com");
-INSERT INTO bookmarks(id, title, url) VALUES (111111, "Facebook", "https://www.facebook.com");
-INSERT INTO bookmarks(id, title, url) VALUES (34343433, "Twitter", "https://www.twitter.com");
 
-SELECT * FROM bookmarks;
+CREATE TABLE `bookmark` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `insert_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO bookmark(title, url) VALUES ("Google", "https://www.google.com");
+INSERT INTO bookmark(title, url) VALUES ("Facebook", "https://www.facebook.com");
+INSERT INTO bookmark(title, url) VALUES ("Twitter", "https://www.twitter.com");
+
+SELECT * FROM bookmark;
