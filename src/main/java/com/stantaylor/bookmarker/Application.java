@@ -13,15 +13,26 @@ public class Application {
 
     public static void main(String[] args) {
 
-        Bookmark bm = new Bookmark();
 
         String snippet = RandomStringUtils.randomAlphabetic(10);
-        bm.setTitle(snippet);
-        bm.setUrl("http://www." + snippet + ".com/");
-        bm.setInsertTime(new Date());
+        Bookmark b = new Bookmark(snippet, "http://www." + snippet + ".com/");
+        b.setInsertTime(new Date());
 
-        Integer id = BookmarkController.create((bm));
-        System.out.println("id: " + id.toString());
+        Integer id = BookmarkController.create((b));
+        System.out.println("Created new bookmark");
+        System.out.println(  "id        : " + b.getId());
+        System.out.println("  title     : " + b.getTitle());
+        System.out.println("  url       : " + b.getUrl());
+        System.out.println("  insertTime: " + b.getInsertTime().toString());
+
+
+        Bookmark newBm = BookmarkController.findByID(b.getId());
+        System.out.println("Got new bookmark: ");
+        System.out.println(  "id        : " + newBm.getId());
+        System.out.println("  title     : " + newBm.getTitle());
+        System.out.println("  url       : " + newBm.getUrl());
+        System.out.println("  insertTime: " + newBm.getInsertTime().toString());
+
 
 
     }

@@ -24,6 +24,11 @@ public class Bookmark {
     public Bookmark() {
     }
 
+    public Bookmark(String title, String url){
+        this.title = title;
+        this.url = url;
+    }
+
     public int getId() {
         return id;
     }
