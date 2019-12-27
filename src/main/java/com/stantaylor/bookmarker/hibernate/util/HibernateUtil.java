@@ -11,9 +11,8 @@ public class HibernateUtil {
         configuration.addAnnotatedClass(com.stantaylor.bookmarker.model.Bookmark.class);
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties());
-        SessionFactory sessionFactory = configuration
+        return configuration
                 .buildSessionFactory(builder.build());
-        return sessionFactory;
     }
 
 }
