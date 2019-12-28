@@ -1,6 +1,7 @@
-package com.stantaylor.bookmarker.controller;
+package com.stantaylor.bookmarker;
 
 
+import com.stantaylor.bookmarker.controller.BookmarkController;
 import com.stantaylor.bookmarker.model.Bookmark;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
