@@ -12,18 +12,18 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/bookmarks")
+@RequestMapping(path = "/")
 public class BookmarkerRestController {
 
     @Autowired
     private BookmarkController bookmarkController;
 
-    @GetMapping(path="/", produces = "application/json")
+    @GetMapping(path="/bookmarks", produces = "application/json")
     public List<Bookmark> getAllBookmarks() {
         return bookmarkController.getAll();
     }
 
-    @PostMapping(path= "/", consumes = "application/json", produces = "application/json")
+    @PostMapping(path= "/bookmarks", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> addBookmark(@RequestBody Bookmark bookmark) {
         BookmarkController.create(bookmark);
 
