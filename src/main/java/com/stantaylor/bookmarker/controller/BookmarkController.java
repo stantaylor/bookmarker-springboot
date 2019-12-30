@@ -1,58 +1,49 @@
 package com.stantaylor.bookmarker.controller;
 
 import com.stantaylor.bookmarker.model.Bookmark;
-import org.hibernate.Session;
+import com.stantaylor.bookmarker.repository.BookmarkRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.List;
+import javax.validation.Valid;
 
-import static com.stantaylor.bookmarker.hibernate.util.HibernateUtil.getSessionFactory;
-
-@Repository
+//import com.stantaylor.bookmarker.model.Bookmark;
+//import org.hibernate.Session;
+//import org.springframework.stereotype.Repository;
+//
+//import java.util.Date;
+//import java.util.List;
+//
+//import static com.stantaylor.bookmarker.hibernate.util.HibernateUtil.getSessionFactory;
+//
+@RestController
 public class BookmarkController {
 
-    public static Integer create(Bookmark b) {
-        Session session = getSessionFactory().openSession();
-        b.setInsertTime(new Date());
-        session.beginTransaction();
-        session.save(b);
-        session.getTransaction().commit();
-        session.close();
-        return b.getId();
+    @Autowired
+    private BookmarkRepository bookmarkRepository;
+
+    @GetMapping("/bookmarks")
+    public Page<Bookmark> getBookmarks(Pageable pageable) {
+        return bookmarkRepository.findAll(pageable);
     }
 
-    public static void update(Bookmark b) {
-        Session session = getSessionFactory().openSession();
-        session.beginTransaction();
-        Bookmark bm = session.load(Bookmark.class, b.getId());
-        bm.setTitle(b.getTitle());
-        bm.setUrl(b.getUrl());
-        session.getTransaction().commit();
-        session.close();
-    }
+    // see https://www.callicoder.com/spring-boot-jpa-hibernate-postgresql-restful-crud-api-example/
 
-    public static void delete(Integer id) {
-        Session session = getSessionFactory().openSession();
-        session.beginTransaction();
-        Bookmark b = findByID(id);
-        session.delete(b);
-        session.getTransaction().commit();
-        session.close();
-    }
+//    @GetMapping("/bookmarks/{id}")
+//    public  Bookmark getBookmarkById(@PathVariable Long id){
+//
+//        return BookmarkRepository.getOne(id);
+//
+//    }
 
-    public static Bookmark findByID(Integer id) {
-        Session session = getSessionFactory().openSession();
-        Bookmark b = session.load(Bookmark.class, id);
-        session.close();
-        return b;
-    }
+//    @PostMapping("/bookmarks")
+//    public Bookmark createBookmark(@Valid @RequestBody Bookmark bookmark) {
+//
+//        return BookmarkRepository.save(bookmark);
+//    }
 
-    public List<Bookmark> getAll() {
-        Session session = getSessionFactory().openSession();
-        List<Bookmark> bookmarks = session.createQuery("from Bookmark", com.stantaylor.bookmarker.model.Bookmark.class).getResultList();
-        session.close();
-        return bookmarks;
 
-    }
 }

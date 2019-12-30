@@ -8,21 +8,22 @@ import java.util.Date;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name="bookmark", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
-public class Bookmark {
+public class Bookmark extends AuditModel {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id", nullable=false, unique=true, length=11)
-    private int id;
+    @GeneratedValue(generator = "bookmark_generator")
+    @SequenceGenerator(
+            name = "bookmark_generator",
+            sequenceName = "bookmark_sequence",
+            initialValue = 1000
+    )
+    private Integer id;
 
     @Column(name="title", length=255, nullable=false)
     private String title;
 
     @Column(name="url", length=255, nullable=false)
     private String url;
-
-    @Column(name="insert_time", nullable=false)
-    private Date insert_time;
 
     public Bookmark() {
     }
@@ -35,6 +36,7 @@ public class Bookmark {
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -53,13 +55,6 @@ public class Bookmark {
 
     public String getUrl() {
         return url;
-    }
-
-    public Date getInsertTime() {
-        return insert_time;
-    }
-    public void setInsertTime(Date insert_time) {
-        this.insert_time = insert_time;
     }
 
 }
