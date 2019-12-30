@@ -2,7 +2,7 @@ title=`date`
 curl \
     --header "Content-Type: application/json" \
     --request POST \
-    --data '{"title": "'$title'","url":"http://www.test1.com"}' \
+    --data '{"title": "This is hte title","url":"http://www.test1.com"}' \
     http://localhost:8081/bookmarks/
 
 curl -v http://localhost:8081/bookmarks/ | json_reformat
