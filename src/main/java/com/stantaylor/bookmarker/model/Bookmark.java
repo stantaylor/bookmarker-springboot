@@ -11,13 +11,8 @@ import java.util.Date;
 public class Bookmark extends AuditModel {
 
     @Id
-    @GeneratedValue(generator = "bookmark_generator")
-    @SequenceGenerator(
-            name = "bookmark_generator",
-            sequenceName = "bookmark_sequence",
-            initialValue = 1000
-    )
-    private Integer id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name="title", length=255, nullable=false)
     private String title;
@@ -33,11 +28,11 @@ public class Bookmark extends AuditModel {
         this.url = url;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

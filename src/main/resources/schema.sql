@@ -11,7 +11,9 @@ CREATE TABLE `bookmark` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO bookmark(title, url) VALUES("bookmark 1", "http://www.bm1.com/");
-INSERT INTO bookmark(title, url) VALUES("bookmark 2", "http://www.bm2.com/");
-INSERT INTO bookmark(title, url) VALUES("bookmark 3", "http://www.bm3.com/");
+ALTER TABLE bookmark AUTO_INCREMENT = 1000;
+
+INSERT INTO bookmark(title, url, created_at, updated_at) VALUES("bookmark 1", "http://www.bm1.com/", NOW(), NOW());
+INSERT INTO bookmark(title, url, created_at, updated_at) VALUES("bookmark 2", "http://www.bm2.com/", NOW(), NOW());
+INSERT INTO bookmark(title, url, created_at, updated_at) VALUES("bookmark 3", "http://www.bm3.com/", NOW(), NOW());
 

@@ -5,7 +5,6 @@ import com.stantaylor.bookmarker.repository.BookmarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,18 +31,18 @@ public class BookmarkController {
 
     // see https://www.callicoder.com/spring-boot-jpa-hibernate-postgresql-restful-crud-api-example/
 
-//    @GetMapping("/bookmarks/{id}")
-//    public  Bookmark getBookmarkById(@PathVariable Long id){
-//
-//        return BookmarkRepository.getOne(id);
-//
-//    }
+    @GetMapping("/bookmarks/{id}")
+    public Bookmark getBookmarkById(@PathVariable Long id){
 
-//    @PostMapping("/bookmarks")
-//    public Bookmark createBookmark(@Valid @RequestBody Bookmark bookmark) {
-//
-//        return BookmarkRepository.save(bookmark);
-//    }
+        return bookmarkRepository.getOne(id);
+
+    }
+
+    @PostMapping("/bookmarks")
+    public Bookmark createBookmark(@Valid @RequestBody Bookmark bookmark) {
+
+        return bookmarkRepository.save(bookmark);
+    }
 
 
 }
