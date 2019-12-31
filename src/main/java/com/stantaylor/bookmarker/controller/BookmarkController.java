@@ -1,5 +1,6 @@
 package com.stantaylor.bookmarker.controller;
 
+import com.stantaylor.bookmarker.exception.ResourceNotFoundException;
 import com.stantaylor.bookmarker.model.Bookmark;
 import com.stantaylor.bookmarker.repository.BookmarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +33,10 @@ public class BookmarkController {
     // see https://www.callicoder.com/spring-boot-jpa-hibernate-postgresql-restful-crud-api-example/
 
     @GetMapping("/bookmarks/{id}")
-    public Bookmark getBookmarkById(@PathVariable Long id){
+    public Bookmark getBookmarkById(@PathVariable Long id) {
 
-        return bookmarkRepository.getOne(id);
+        return bookmarkRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Bookmark not found with id " + id));
 
     }
 
@@ -44,5 +46,15 @@ public class BookmarkController {
         return bookmarkRepository.save(bookmark);
     }
 
+    @PutMapping("/bookmarks/{id}")
+    public Bookmark updateBookmark(@PathVariable Long id,
+                                   @Valid @RequestBody Bookmark bookmarkRequest) {
+        return bookmarkRepository.findById(id)
+                .map(bookmark -> {
+                    bookmark.setTitle(bookmarkRequest.getTitle());
+                    bookmark.setUrl(bookmarkRequest.getUrl());
+                    return bookmarkRepository.save(bookmark);
+                }).orElseThrow(() -> new ResourceNotFoundException("Bookmark not found with id " + id));
+    }
 
 }

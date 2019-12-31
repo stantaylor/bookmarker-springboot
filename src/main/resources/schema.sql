@@ -13,7 +13,7 @@ CREATE TABLE `bookmark` (
 
 ALTER TABLE bookmark AUTO_INCREMENT = 1000;
 
-INSERT INTO bookmark(title, url, created_at, updated_at) VALUES("bookmark 1", "http://www.bm1.com/", NOW(), NOW());
-INSERT INTO bookmark(title, url, created_at, updated_at) VALUES("bookmark 2", "http://www.bm2.com/", NOW(), NOW());
-INSERT INTO bookmark(title, url, created_at, updated_at) VALUES("bookmark 3", "http://www.bm3.com/", NOW(), NOW());
+# INSERT INTO bookmark(title, url, created_at, updated_at) VALUES("bookmark 1", "http://www.bm1.com/", NOW(), NOW());
+# INSERT INTO bookmark(title, url, created_at, updated_at) VALUES("bookmark 2", "http://www.bm2.com/", NOW(), NOW());
+# INSERT INTO bookmark(title, url, created_at, updated_at) VALUES("bookmark 3", "http://www.bm3.com/", NOW(), NOW());
 

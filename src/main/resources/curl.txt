@@ -1,8 +1,25 @@
-title=`date`
 curl \
     --header "Content-Type: application/json" \
     --request POST \
-    --data '{"title": "This is hte title","url":"http://www.test1.com"}' \
+    --data '{"title": "This is the title Test 2","url":"http://www.test1.com"}' \
     http://localhost:8081/bookmarks/
 
-curl -v http://localhost:8081/bookmarks/ | json_reformat
+curl -v http://localhost:8081/bookmarks/ | json_pp
+
+curl -v http://localhost:8081/bookmarks/1000 | json_pp
+
+curl -v http://localhost:8081/bookmarks/1001123
+
+curl -v http://localhost:8081/bookmarks/1001AA
+
+curl \
+    --header "Content-Type: application/json" \
+    --request PUT \
+    --data '{"title": "This is the title 444asdfsdfsadf","url":"http://www.adfadfatest1.com"}' \
+    http://localhost:8081/bookmarks/1000
+
+    curl \
+        --header "Content-Type: application/json" \
+        --request PUT \
+        --data '{"title": "This is the title 444asdfsdfsadf","url":"http://www.adfadfatest1.com"}' \
+        http://localhost:8081/bookmarks/100333

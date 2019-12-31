@@ -3,27 +3,27 @@ package com.stantaylor.bookmarker.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
-@Table(name="bookmark", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
-public class Bookmark extends AuditModel {
+@Table(name = "bookmark", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+public class Bookmark extends DateAudit {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="title", length=255, nullable=false)
+    @Column(name = "title", length = 255, nullable = false)
     private String title;
 
-    @Column(name="url", length=255, nullable=false)
+    @Column(name = "url", length = 255, nullable = false)
     private String url;
+
 
     public Bookmark() {
     }
 
-    public Bookmark(String title, String url){
+    public Bookmark(String title, String url) {
         this.title = title;
         this.url = url;
     }
