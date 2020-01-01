@@ -24,7 +24,7 @@ tasks.withType(GroovyCompile).each {
     it.options.compilerArgs += ['-source', '1.8', '-target', '1.8']
 }
 bootJar {
-    baseName = 'gs-rest-service'
+    baseName = 'stantaylor-bookmarker-app'
     version =  '0.1.0'
 }
 
